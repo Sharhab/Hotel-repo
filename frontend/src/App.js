@@ -6,8 +6,8 @@ import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import CropManagement from './components/CropManagement';
 import LivestockManagement from './components/LivestockManagement';
-import { loadUser } from './actions/userActions';
-import ProtectedRoute from './components/ProtectedRoute';
+import { loadUser } from './layouts/userAction';
+// import ProtectedRoute from './components/ProtectedRoute';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -23,11 +23,11 @@ const App = () => {
         <Routes>
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route element={<ProtectedRoute />}>
+         // <Route element={<ProtectedRoute />}>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/crop-management" element={<ProtectedRoute role="admin"><CropManagement /></ProtectedRoute>} />
             <Route path="/livestock-management" element={<ProtectedRoute role="admin"><LivestockManagement /></ProtectedRoute>} />
-          </Route>
+          // </Route>
           <Route path="/" element={<Login />} />
         </Routes>
       </div>
