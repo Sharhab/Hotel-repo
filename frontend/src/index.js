@@ -2,11 +2,9 @@
 // src/index.js
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { configureStore } from '@reduxjs/toolkit';
 import App from './App';
-import rootReducer from './reducers';
+import store from './components/store';
 
 // Create Redux store
 const store = configureStore({
@@ -14,10 +12,8 @@ const store = configureStore({
 });
 
 ReactDOM.render(
-  <Provider store={store}>
-    <Router>
+  <Provider store={store}> 
       <App />
-    </Router>
   </Provider>,
   document.getElementById('root')
 );
