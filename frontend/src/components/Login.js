@@ -1,7 +1,7 @@
 // components/Login.js
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { login } from '../layouts/userActions';
+import { login } from '../layouts/userAction';
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
