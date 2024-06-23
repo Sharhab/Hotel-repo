@@ -1,7 +1,7 @@
 // components/Register.js
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { register } from '../layouts/userActions';
+import { register } from '../layouts/userAction';
 
 const Register = () => {
   const [formData, setFormData] = useState({ name: '', email: '', password: '', role: 'worker' });
