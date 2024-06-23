@@ -1,7 +1,7 @@
 // components/Dashboard.js
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadUser } from '../layouts/userActions';
+import { loadUser } from '../layouts/userAction';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
