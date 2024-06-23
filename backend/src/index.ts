@@ -1,28 +1,28 @@
-// index.js
+// server.js or app.js
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const app = express();
+const userRoutes = require('./routes/users');
+const cropRoutes = require('./routes/crops');
+const livestockRoutes = require('./routes/livestock');
 
-// Middleware
-app.use(express.json());
+const app = express();
+const PORT = process.env.PORT || 5000;
+
 app.use(cors());
+app.use(express.json());
 
 // MongoDB connection
-mongoose.connect('mongodb://localhost:27017/farm_management', {
+mongoose.connect('your_mongo_db_connection_string', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 
 // Routes
-const userRoutes = require('./routes/users');
-const cropRoutes = require('./routes/crops');
-const livestockRoutes = require('./routes/livestock');
-
 app.use('/api/users', userRoutes);
 app.use('/api/crops', cropRoutes);
 app.use('/api/livestock', livestockRoutes);
 
-// Start the server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
