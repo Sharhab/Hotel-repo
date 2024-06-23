@@ -1,7 +1,10 @@
 // components/Dashboard.js
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadUser } from '../layouts/userAction';
+import { loadUser } from '../actions/userActions';
+import AdminPanel from './AdminPanel';
+import WorkerDashboard from './WorkerDashboard';
+import { CircularProgress, Container, Typography, Box } from '@mui/material';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -12,30 +15,25 @@ const Dashboard = () => {
   }, [dispatch]);
 
   if (!user) {
-    return <div>Loading...</div>;
+    return (
+      <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: 8 }}>
+        <CircularProgress />
+      </Box>
+    );
   }
 
   return (
-    <div>
-      <h1>Welcome, {user.name}</h1>
-      <p>Email: {user.email}</p>
-      <p>Role: {user.role}</p>
-      {user.role === 'admin' ? (
-        <div>
-          <h2>Admin Panel</h2>
-          <p>Here you can manage the farm resources, users, and more.</p>
-          {/* Add admin-specific features and components */}
-        </div>
-      ) : (
-        <div>
-          <h2>Worker Dashboard</h2>
-          <p>Here you can view and update your tasks.</p>
-          {/* Add worker-specific features and components */}
-        </div>
-      )}
-    </div>
+    <Container>
+      <Box sx={{ marginTop: 8 }}>
+        <Typography variant="h4" gutterBottom>
+          Welcome, {user.name}
+        </Typography>
+        <Typography variant="body1">Email: {user.email}</Typography>
+        <Typography variant="body1">Role: {user.role}</Typography>
+        {user.role === 'admin' ? <AdminPanel /> : <WorkerDashboard />}
+      </Box>
+    </Container>
   );
 };
 
 export default Dashboard;
-
