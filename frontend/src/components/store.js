@@ -5,7 +5,7 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import userReducer from '../assets/userReducer';
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
   user: userReducer,
 });
 
