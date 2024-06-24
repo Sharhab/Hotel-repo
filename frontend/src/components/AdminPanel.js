@@ -1,7 +1,7 @@
 // components/AdminPanel.js
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateTask, addTask } from '../actions/taskActions';
+import { updateTask, addTask } from '../assets/taskAction';
 import { Box, Button, TextField, Typography, List, ListItem, ListItemText } from '@mui/material';
 
 const AdminPanel = () => {
