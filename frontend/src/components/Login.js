@@ -1,12 +1,13 @@
-// components/Login.js
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { login } from '../layouts/userAction';
+import { useNavigate } from 'react-router-dom';
+import { login } from '../actions/userActions';
 import { TextField, Button, Box, Typography, Container } from '@mui/material';
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { email, password } = formData;
 
@@ -15,6 +16,14 @@ const Login = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     dispatch(login(email, password));
+  };
+
+  const goToDashboard = () => {
+    navigate('/dashboard');
+  };
+
+  const goToRegister = () => {
+    navigate('/register');
   };
 
   return (
@@ -63,6 +72,23 @@ const Login = () => {
             sx={{ mt: 3, mb: 2 }}
           >
             Sign In
+          </Button>
+          <Button
+            fullWidth
+            variant="outlined"
+            color="secondary"
+            onClick={goToDashboard}
+            sx={{ mt: 1, mb: 1 }}
+          >
+            Go to Dashboard
+          </Button>
+          <Button
+            fullWidth
+            variant="outlined"
+            color="secondary"
+            onClick={goToRegister}
+          >
+            Go to Register
           </Button>
         </Box>
       </Box>
