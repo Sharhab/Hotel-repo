@@ -1,7 +1,7 @@
 // components/Register.js
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { register } from '../actions/userActions';
+import { register } from '../assets/userAction';
 import { TextField, Button, Box, Typography, Container, MenuItem, Select, InputLabel, FormControl } from '@mui/material';
 
 const Register = () => {
